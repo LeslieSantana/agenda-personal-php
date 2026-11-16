@@ -1,0 +1,21 @@
+GUION PARA EL VIDEO DE PRESENTACIÓN (máximo 3 minutos)
+
+0:00–0:20 | Presentación
+“Esta es Mi Agenda Personal, una aplicación desarrollada con PHP y MySQL. Permite que cada usuario registre una cuenta y administre únicamente sus propios contactos.”
+
+0:20–0:45 | Registro e inicio de sesión
+“Primero registro un usuario con nombre, correo y contraseña. El sistema comprueba que el correo no esté repetido. Luego inicio sesión con esas credenciales.”
+
+0:45–1:35 | Gestión de contactos
+“En el panel se muestra mi nombre, correo y la lista de mis contactos. Ahora registro un contacto, luego edito sus datos y finalmente lo elimino. Antes de eliminar, el sistema solicita confirmación.”
+
+1:35–2:15 | Seguridad
+“Las contraseñas no se guardan en texto plano: se almacenan con password_hash() y se verifican con password_verify(). Las páginas privadas comprueban que exista una sesión activa. También se usan consultas preparadas con PDO y tokens CSRF en las operaciones que modifican datos.”
+
+2:15–2:45 | Protección de contactos
+“Cada contacto se guarda con el identificador del usuario propietario. Al consultar, editar o eliminar, las consultas verifican tanto el ID del contacto como el ID del usuario que inició sesión. Por eso, cambiar manualmente el ID en la URL no permite acceder a contactos de otra persona.”
+
+2:45–3:00 | Cierre de sesión
+“Finalmente cierro sesión. La aplicación destruye la sesión y devuelve al formulario de ingreso. Así se completa el funcionamiento de la agenda personal.”
+
+CONSEJO: Antes de grabar, crea dos cuentas diferentes y agrega un contacto a cada una. Puedes demostrar que la segunda cuenta no ve los contactos de la primera.
