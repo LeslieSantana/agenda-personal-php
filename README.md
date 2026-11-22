@@ -41,6 +41,8 @@ Desarrollar una aplicación web que facilite la administración de contactos per
 2. **Ordenamiento:** permite organizar los contactos alfabéticamente por nombre o ciudad.
 3. **Categorías:** permite clasificar los contactos según su relación o actividad.
 4. **Favoritos:** permite marcar contactos importantes y filtrarlos para acceder rápidamente a ellos.
+   <img width="1326" height="632" alt="image" src="https://github.com/user-attachments/assets/a5b25c99-9710-4172-9ab4-b6976915f25d" />
+
 
 ## Seguridad aplicada
 
