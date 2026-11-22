@@ -1,64 +1,105 @@
-# Mi Agenda Personal
+# Mi Agenda Personal de Contactos
 
-Aplicación web académica para administrar una agenda de contactos privada por usuario.
+Aplicación web académica desarrollada en PHP y MySQL para administrar contactos personales de forma privada. Permite registrar usuarios, gestionar sus contactos y organizarlos mediante categorías y favoritos.
 
-## Tecnologías
-- PHP 8.0 o superior
-- MySQL 5.7+ / MariaDB
-- PDO para consultas preparadas
-- HTML5 y CSS3
+## Aplicación publicada
 
-## Requisitos
-- XAMPP (Apache, PHP y MySQL)
-- Navegador web
-- phpMyAdmin (incluido en XAMPP)
+**Enlace público:** https://agenda-contactosllsantana.rf.gd/
 
-## Instalación nueva en XAMPP
-1. Copia la carpeta `agenda_personal` dentro de `C:\xampp\htdocs\`.
-2. Abre el Panel de Control de XAMPP e inicia **Apache** y **MySQL**.
-3. Entra a `http://localhost/phpmyadmin`.
-4. Selecciona **Importar**, elige `database.sql` y pulsa **Continuar**. Este script crea la base de datos y sus tablas con las mejoras.
-5. Revisa `config/database.php`. En una instalación típica de XAMPP el usuario es `root` y la contraseña está vacía.
-6. Abre `http://localhost/agenda_personal/`.
-7. Registra un usuario, inicia sesión y agrega tus contactos.
+**Repositorio GitHub:** https://github.com/LeslieSantana/agenda-personal-php
 
-## Actualizar una instalación anterior sin perder contactos
-1. Antes de modificar la base de datos, entra a phpMyAdmin, selecciona `agenda_personal` y usa **Exportar** para guardar una copia de seguridad.
-2. En phpMyAdmin selecciona la base `agenda_personal` y abre la pestaña **Importar**.
-3. Importa el archivo `migracion_mejoras.sql` una sola vez. Este script crea las categorías, agrega el campo de favoritos y asigna los contactos existentes a la categoría **Otro**.
-4. Reemplaza los archivos PHP y CSS por la versión actualizada del proyecto.
-5. Abre `http://localhost/agenda_personal/` y prueba las nuevas opciones.
+## Objetivo del proyecto
 
-> No importes `database.sql` sobre una instalación existente para aplicar las mejoras. Usa `migracion_mejoras.sql` para conservar los datos actuales.
+Desarrollar una aplicación web que facilite la administración de contactos personales, incorporando herramientas de búsqueda, organización y clasificación, así como mecanismos de seguridad para proteger la información de cada usuario.
 
-## Funcionalidades
-- Registro de usuarios con correo único.
+## Tecnologías utilizadas
+
+- PHP 8.0 o superior.
+- MySQL / MariaDB.
+- PDO para consultas preparadas.
+- HTML5.
+- CSS3.
+- Apache mediante XAMPP.
+- InfinityFree para el alojamiento web.
+
+## Funcionalidades principales
+
+- Registro de usuarios con correo electrónico único.
 - Inicio y cierre de sesión.
-- Panel privado: cada usuario administra únicamente sus propios contactos.
+- Panel privado para administrar contactos.
 - Crear, editar y eliminar contactos.
-- Búsqueda de contactos por nombre, correo electrónico o ciudad.
-- Ordenamiento alfabético por nombre o ciudad.
-- Categorías: Familia, Amigos, Trabajo, Universidad y Otro.
+- Búsqueda por nombre, correo electrónico o ciudad.
+- Ordenamiento de contactos por nombre o ciudad.
+- Organización mediante categorías: Familia, Amigos, Trabajo, Universidad y Otro.
 - Marcado y filtrado de contactos favoritos.
-- Confirmación antes de eliminar un contacto.
 - Validación de datos en el servidor.
+- Confirmación antes de eliminar contactos.
+
+## Mejoras implementadas
+
+1. **Búsqueda de contactos:** permite localizar registros mediante el nombre, correo electrónico o ciudad.
+2. **Ordenamiento:** permite organizar los contactos alfabéticamente por nombre o ciudad.
+3. **Categorías:** permite clasificar los contactos según su relación o actividad.
+4. **Favoritos:** permite marcar contactos importantes y filtrarlos para acceder rápidamente a ellos.
 
 ## Seguridad aplicada
-- `password_hash()` almacena contraseñas como hashes y `password_verify()` las comprueba.
-- Consultas PDO preparadas para reducir el riesgo de inyección SQL.
-- Cookies de sesión `HttpOnly` y `SameSite=Lax`; `Secure` se activa cuando se usa HTTPS.
-- Verificación de sesión en todas las páginas privadas.
+
+- Contraseñas protegidas mediante `password_hash()` y verificadas con `password_verify()`.
+- Consultas preparadas mediante PDO para reducir el riesgo de inyección SQL.
+- Protección de sesiones.
 - Token CSRF en formularios que modifican información.
-- Escape de contenido con `htmlspecialchars()` al mostrar datos.
-- Las consultas de lectura, edición y eliminación filtran por `id_usuario`, por lo que un usuario no puede operar sobre contactos ajenos aunque cambie el ID en la URL.
+- Escape de contenido mediante `htmlspecialchars()`.
+- Restricción de acceso a los contactos pertenecientes a otros usuarios.
 
-## Estructura
-- `config/`: conexión a la base de datos.
-- `includes/`: autenticación, funciones comunes y estructura visual.
-- `assets/`: estilos CSS.
-- `database.sql`: creación de la base de datos para una instalación nueva.
-- `migracion_mejoras.sql`: actualización de una base existente conservando los contactos.
-- Archivos PHP: registro, login, panel y operaciones de contactos.
+## Estructura del proyecto
 
-## Repositorio y despliegue
-Antes de entregar, completar este README con la URL pública del hosting y agregar capturas de pantalla del sistema funcionando. No subir contraseñas reales de bases de datos ni datos personales.
+- `assets/`: archivos de estilos y recursos visuales.
+- `config/`: configuración y conexión con la base de datos.
+- `includes/`: autenticación, funciones comunes y elementos visuales.
+- `database/`: archivos relacionados con la base de datos.
+- Archivos PHP: registro, inicio de sesión, panel y operaciones de contactos.
+- `README.md`: documentación del proyecto.
+
+## Instalación local en XAMPP
+
+1. Instalar XAMPP.
+2. Copiar la carpeta `agenda_personal` dentro de `C:\xampp\htdocs\`.
+3. Iniciar Apache y MySQL desde el panel de XAMPP.
+4. Abrir `http://localhost/phpmyadmin`.
+5. Importar el archivo `database.sql`.
+6. Configurar `config/database.php` con los datos de conexión local.
+7. Abrir `http://localhost/agenda_personal/`.
+8. Registrar un usuario e iniciar sesión para comenzar a utilizar la aplicación.
+
+## Base de datos
+
+El proyecto incluye dos archivos SQL:
+
+- `database.sql`: permite crear la base de datos y sus tablas para una instalación nueva.
+- `migracion_mejoras.sql`: permite actualizar una instalación anterior, conservando los contactos existentes y agregando las nuevas funcionalidades.
+
+Antes de realizar una migración, se recomienda generar una copia de seguridad de la base de datos.
+
+## Despliegue web
+
+La aplicación fue publicada utilizando el servicio de alojamiento gratuito InfinityFree.
+
+**URL de acceso:** https://agenda-contactosllsantana.rf.gd/
+
+La base de datos se configuró en el servidor de alojamiento para permitir el funcionamiento de la aplicación en Internet.
+
+## Evidencias del proyecto
+
+Se incorporarán capturas de pantalla que permitan observar:
+
+- Página de inicio de sesión.
+- Registro de usuarios.
+- Panel principal de contactos.
+- Búsqueda y ordenamiento.
+- Clasificación por categorías.
+- Gestión de contactos favoritos.
+- Aplicación funcionando desde el alojamiento web.
+
+## Autora - Leslie Santana Daza
+
+Proyecto académico desarrollado como práctica de programación web, utilizando PHP y MySQL.
